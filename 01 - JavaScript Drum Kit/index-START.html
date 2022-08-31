@@ -58,7 +58,20 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  const kbd = document.querySelectorAll('kbd');
+  const keys = document.querySelectorAll('div.key');
+  const audio = document.querySelectorAll('audio');
 
+  document.addEventListener('keypress', (e) => {
+    for (let i = 0; i < kbd.length; i++) {
+    if (e.key.toUpperCase() === kbd[i].textContent) {
+      audio[i].currentTime = 0;
+      audio[i].play();
+      keys[i].classList.toggle('playing');
+      setTimeout(function() {keys[i].classList.toggle('playing')}, 100);
+    }
+  }
+  })
 </script>
 
 
